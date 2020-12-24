@@ -6,23 +6,27 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
-import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { RegisterationFormComponent } from './registeration-form/registeration-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SyptomsComponent } from './syptoms/syptoms.component';
+import { HomeComponent } from './home/home.component';
+import { PatientsDetailsComponent } from './patients-details/patients-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeFormComponent,
-    SyptomsComponent
+    RegisterationFormComponent,
+    SyptomsComponent,
+    HomeComponent,
+    PatientsDetailsComponent
   ],
   entryComponents:[
     SyptomsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     MaterialModule,
     HttpClientModule,
     FormsModule,

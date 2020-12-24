@@ -9,10 +9,10 @@ import { SyptomsComponent } from '../syptoms/syptoms.component';
 
 @Component({
   selector: 'employee-form',
-  templateUrl: './employee-form.component.html',
-  styleUrls: ['./employee-form.component.css']
+  templateUrl: './registeration-form.component.html',
+  styleUrls: ['./registeration-form.component.css']
 })
-export class EmployeeFormComponent implements OnInit {
+export class RegisterationFormComponent implements OnInit {
 
   sdList: IstateDistrict[] = [];
   states: string[] = [];

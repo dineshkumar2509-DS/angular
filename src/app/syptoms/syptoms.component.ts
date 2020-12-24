@@ -51,14 +51,16 @@ export class SyptomsComponent implements OnInit {
   }
 
   onDone(group: any) {
-    this.disableDropDown(group)
-    group.controls.isEditable.setValue(false);
-    this.singleRow = !this.singleRow;
+    if (this.symptoms.valid) {
+      this.disableDropDown(group)
+      group.controls.isEditable.setValue(false);
+      this.singleRow = !this.singleRow;
+      }
   }
 
   onDel(i: number) {
     this.symptomsList.removeAt(i);
-    this.singleRow=!this.singleRow;
+    this.singleRow = !this.singleRow;
   }
 
   disableDropDown(group: any) {
@@ -73,7 +75,7 @@ export class SyptomsComponent implements OnInit {
     if (this.singleRow) {
       this.disableDropDown(group);
       group.controls.isEditable.setValue(true)
-      this.singleRow=!this.singleRow;
+      this.singleRow = !this.singleRow;
     }
   }
 
