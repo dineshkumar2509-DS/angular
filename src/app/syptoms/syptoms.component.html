@@ -1,0 +1,49 @@
+<h1 class="mat-display-1">hi {{data.name}}</h1>
+<form [formGroup]="symptoms" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <button type="button" mat-raised-button (click)="addRow()">addRow</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">symptoms</th>
+                    <th scope="col">Number of days</th>
+                    <th scope="col">remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container formArrayName="symptoms_List" *ngFor="let group of symptomsList.controls ; let i=index">
+                    <tr *ngIf="group.get('isEditable')!.value; else elseBlock" [formGroupName]="i">
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>symptoms</mat-label>
+                                <mat-select formControlName="symptomsType">
+                                    <mat-option *ngFor="let items of symptomsArray;" [value]="items.value" [disabled]="items.used">
+                                        {{items.value}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>number of days</mat-label>
+                                <input type="text" matInput formControlName="numberOfDays" placeholder="ex 2">
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <button mat-raised-button (click)="onDone(group)">done</button>
+                            <button type="button" mat-raised-button (click)="onDel(i)">delete</button>
+                        </td>
+                    </tr>
+                    <ng-template #elseBlock>
+                        <tr [formGroupName]="i">
+                            <td>{{group.get('symptomsType')!.value}}</td>
+                            <td>{{group.get('numberOfDays')!.value}}</td>
+                            <td><button type="button" mat-raised-button (click)="onEdit(group)">edit</button></td>
+                        </tr>
+                    </ng-template>
+                </ng-container>
+            </tbody>
+        </table>
+        <button type="button" mat-raised-button (click)="onClose()">close</button>
+    </div>
+</form>

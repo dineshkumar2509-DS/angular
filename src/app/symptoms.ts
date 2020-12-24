@@ -1,0 +1,29 @@
+export const patientsSymptoms=[
+    {
+        name:"dinesh",
+        symptomsList:[
+            {
+                symptom:"fever",
+                nod:"2"
+            },
+            {
+                symptom:"headache",
+                nod:"2"
+            }
+        ]
+    },
+    {
+        name:"ramesh",
+        symptomsList:[
+            {
+                symptom:"fever",
+                nod:"1"
+            },
+            {
+                symptom:"headache",
+                nod:"3"
+            }
+        ]
+    }
+
+];

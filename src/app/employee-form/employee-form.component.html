@@ -1,0 +1,68 @@
+<div class="container">
+    <h1 class="display-2 heading">Registeration form</h1>
+    <form [formGroup]="pateientForm" (ngSubmit)="onSubmit()">
+        <div class="form-group nameInput">
+            <mat-label for="name">Name</mat-label>
+            <mat-form-field class="name" appearance="fill" hideRequiredMarker>
+                <mat-label for="firstName">First name</mat-label>
+                <input matInput id="firstName" name="firstName" formControlName="firstName">
+            </mat-form-field><br>
+            <mat-form-field class="name" appearance="fill" hideRequiredMarker>
+                <mat-label for="lastName">Last name</mat-label>
+                <input matInput id="lastName" name="lastName" formControlName="lastName">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-label for="gender"
+                [class.help-field]="!pateientForm.controls.gender.valid && pateientForm.controls.gender.touched">gender
+            </mat-label>
+            <mat-radio-group aria-label="Select an option" id="gender" name="gender" formControlName="gender">
+                <mat-radio-button value="m" color="primary">Male</mat-radio-button>
+                <mat-radio-button value="f" color="primary">Female</mat-radio-button>
+                <mat-radio-button value="o" color="primary">Others</mat-radio-button>
+            </mat-radio-group><br>
+            <span *ngIf="!pateientForm.controls.gender.valid && pateientForm.controls.gender.touched"
+                class="help-field">*field required</span>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="fill" hideRequiredMarker>
+                <mat-label>Select DOB</mat-label>
+                <input (ngModelChange)="calcAge($event)" matInput [matDatepicker]="picker" name="dob"
+                    formControlName="dob">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field><br>
+            <span *ngIf="pateientForm.controls.dob.valid && pateientForm.controls.dob.touched">
+                yor age is:{{age}}
+            </span>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="fill" hideRequiredMarker>
+                <mat-label>Select state</mat-label>
+                <mat-select (ngModelChange)="selectDistrict($event)" name="stateName" formControlName="state">
+                    <mat-option>select</mat-option>
+                    <mat-option *ngFor="let items of states ; let i=index" [value]="i">
+                        {{items}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field><br>
+            <mat-form-field appearance="fill" hideRequiredMarker>
+                <mat-label>Select District</mat-label>
+                <mat-select name="districtName" formControlName="district">
+                    <mat-option>select</mat-option>
+                    <mat-option *ngFor="let items of district " [value]="items">
+                        {{items}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-group" *ngIf="pateientForm.valid">
+            <button type="button" mat-raised-button (click)="openSymptoms()">symptoms</button>
+        </div>
+
+        <div class="form-button">
+            <button type="button" mat-stroked-button color="primary" (click)="onReset()">Reset</button>
+            <button mat-stroked-button color="primary">submit</button>
+        </div>
+    </form>
+</div>

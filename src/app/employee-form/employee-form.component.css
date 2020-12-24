@@ -1,0 +1,40 @@
+.container {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 30%;
+}
+
+.heading {
+    text-align: center;
+}
+
+.form-group {
+    padding: 0%;
+    position: relative;
+    margin-left: 24%;
+    
+}
+
+.form-group mat-label {
+    display: block;
+    padding-bottom: 1%;
+}
+
+.nameInput .name {
+    padding: 0% 1%;
+}
+.mat-form-field-empty.mat-form-field-label {
+    color: red;
+}
+
+.help-field{
+    color: red;
+}
+.form-button{
+    margin-left: 32%;
+    margin-bottom:10% ;
+}
