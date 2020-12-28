@@ -6,6 +6,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DataserviceService } from '../services/dataservice.service';
 import { IstateDistrict } from '../services/statedistrict';
 import { SyptomsComponent } from '../syptoms/syptoms.component';
+import { details } from "../patientdetails";
 
 @Component({
   selector: 'employee-form',
@@ -24,6 +25,8 @@ export class RegisterationFormComponent implements OnInit {
   dialogRef?: MatDialogRef<SyptomsComponent>;
   symptomsArray!:[];
   temp?:[];
+  pateientDeatils!:any;
+  veiwdetails = true;
 
   constructor(private sdService: DataserviceService,
     private dialog: MatDialog,
@@ -34,11 +37,25 @@ export class RegisterationFormComponent implements OnInit {
     temp.states.forEach((item: any) => {
       this.states.push(item.state);
     })
-    console.log(this.states);
   }
 
   onSubmit() {
-    
+    if(this.symptomsArray.length>0){
+      this.veiwdetails=false;
+      this.pateientDeatils.push(this.populateOnsubmit());
+    }
+  }
+
+  populateOnsubmit(){
+    return({
+      firstname:this.pateientForm.controls.firstName.value,
+      lastname:this.pateientForm.controls.lastName.value,
+      gender:this.pateientForm.controls.gender.value,
+      age:this.age,
+      state:this.states[this.pateientForm.controls.state.value],
+      district:this.pateientForm.controls.district.value,
+      symptoms:this.symptomsArray
+  })
   }
 
   selectDistrict(event: any): void {
@@ -51,16 +68,11 @@ export class RegisterationFormComponent implements OnInit {
       var timeDiff = Math.abs(Date.now() - event.getTime());
       this.age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
     }
-    console.log(this.age);
   }
 
   onReset(){
     this.pateientForm.reset();
   }
-
-  // check() {
-  //   console.log(this.pateientForm.controls);
-  // }
 
   openSymptoms() {
     this.dialogRef=this.dialog.open(SyptomsComponent, {
@@ -92,6 +104,8 @@ export class RegisterationFormComponent implements OnInit {
       state: ['', Validators.required],
       district: ['', Validators.required]
     })
+
+    this.pateientDeatils=details;
 
   }
 

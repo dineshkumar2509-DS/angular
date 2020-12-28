@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { details } from "../patientdetails";
 
 @Component({
   selector: 'app-patients-details',
@@ -9,7 +10,12 @@ export class PatientsDetailsComponent implements OnInit {
 
   constructor() { }
 
+  details: any;
+  panelOpenState = false;
+
+
   ngOnInit(): void {
+    this.details = details;
   }
 
 }

@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SyptomsComponent } from './syptoms/syptoms.component';
 import { HomeComponent } from './home/home.component';
 import { PatientsDetailsComponent } from './patients-details/patients-details.component';
+import { TopSidebarComponent } from './top-sidebar/top-sidebar.component';
+import { ViewpatientComponent } from './viewpatient/viewpatient.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { PatientsDetailsComponent } from './patients-details/patients-details.co
     RegisterationFormComponent,
     SyptomsComponent,
     HomeComponent,
-    PatientsDetailsComponent
+    PatientsDetailsComponent,
+    TopSidebarComponent,
+    ViewpatientComponent
   ],
   entryComponents:[
     SyptomsComponent
